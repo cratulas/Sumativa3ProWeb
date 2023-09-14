@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> </title>
+
+    <!-- Integracion con boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Integracion CSS -->
+    <link rel="stylesheet" href="{% static 'fromagerie/css/style.css'%}">
+    <!-- Integracion con fontawesome -->
+    <script src="https://kit.fontawesome.com/ab6bee0ad1.js" crossorigin="anonymous"></script>
+  </head>
+<body>
+    <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
+      <div class="container">
+      <a class="navbar-brand" href="{% url 'index' %}"><span style="color: #5e9693;">Fromagerie</span></a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Online Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav d-flex flex-row">
+              <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="shoppingCart.html">
+                  <i class="fas fa-shopping-cart"></i>
+                </a>
+              </li>
+              <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="{% url 'login' %}">
+                  <i class="fa fa-user"></i>
+                </a>
+              </li>
+              <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="https://www.instagram.com">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar -->
+      </header>
+
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="card-body">
+              <img src="{% static 'fromagerie/img/fromager3.jpg'%}" class="d-block w-100" alt="fromager1">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card-body">
+              <img src="{% static 'fromagerie/img/fromager1.jpg'%}" class="d-block w-100" alt="fromager1">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card-body">
+              <img src="{% static 'fromagerie/img/fromager2.jpg'%}" class="d-block w-100" alt="fromager1">
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+
+      <div class="container my-5">
+        <h2 class="my-4 text-center">Categories</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card h-100">
+              <img src="{% static 'fromagerie/img/bleu-dauvergne.webp'%}" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Blue Cheese</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+
+              <img src="{% static 'fromagerie/img/goatCHeese.jpg'%}" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Goat Cheese</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="{% static 'fromagerie/img/hardCheese.jpeg'%}" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Hard Cheese</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-large mt-5">
+        <!-- Footer -->
+        <footer class="text-center text-white">
+          <!-- Copyright -->
+          <div
+              class="text-center p-3"
+              style="background-color: #ab4493;"
+              >
+            © 2020 Copyright:
+            <a class="text-white" href="#"
+              >Fromagerie</a
+              >
+          </div>
+          <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+      </div>
+      <!-- End of .container -->
+    
+      
+</body>
+  <!-- Integracion con Jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Integracion con boostrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</html>
