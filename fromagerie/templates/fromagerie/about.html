@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
-  {% load static%}
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> </title>
+    <title>Tienda en Línea</title>
+    <link rel="stylesheet" href="{% static 'fromagerie/css/SHOP.css' %}">
+    <link rel="stylesheet" href="{% static 'fromagerie/css/style.css'%}">
 
-    <!-- Integracion con boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <!-- Integracion CSS -->
-       <!-- Integracion CSS -->
-    <link rel="stylesheet" href="{% static 'fromagerie/css/styleAbout.css'%}">
-    <!-- Integracion con fontawesome -->
-    <script src="https://kit.fontawesome.com/ab6bee0ad1.js" crossorigin="anonymous"></script>
-  </head>
+
+  <!-- Integracion con boostrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+ 
+  <!-- Integracion con fontawesome -->
+  <script src="https://kit.fontawesome.com/ab6bee0ad1.js" crossorigin="anonymous"></script>
+
+
+ </head>
+
+ 
+ <div class="container my-5">
+  <h2 class="my-4 text-center">Pyme queseria Duoc uc </h2>
+  <p>Somos una pequeña y apasionada empresa de quesos ubicada en Chile, formada por un grupo de alumnos de la Universidad Duoc UC. Nuestra pasión por la producción de quesos de alta calidad nos ha llevado a embarcarnos en esta emocionante aventura empresarial.</p>
+            <p>Nuestro compromiso con la excelencia y la tradición quesera nos impulsa a crear productos únicos y deliciosos que reflejan nuestra dedicación y conocimiento. Trabajamos con las mejores materias primas y técnicas artesanales para producir una variedad de quesos que deleitarán tu paladar.</p>
+            <p>En Quesos Duoc UC, creemos en el sabor auténtico y en compartir la pasión por el queso con nuestros clientes. Esperamos que disfrutes de nuestros productos tanto como nosotros disfrutamos haciendo que cada bocado sea especial.</p>
+ </div >
+
+
 <body>
+
+
     <header>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
             <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}"><span style="color: #5e9693;">Fromagerie</span></a>
+            <a class="navbar-brand" href="{% url 'index' %}"><span style="color: #5e9693;">Quesería Duoc UC</span></a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -28,13 +43,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="shop.html">Online Shop</a>
+                        <a class="nav-link" href="{% url 'shop' %}">Tienda</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'about' %}">About</a>
+                      <a class="nav-link" href="{% url 'about' %}">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                      <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
                     </li>
                   </ul>
                   <ul class="navbar-nav d-flex flex-row">
@@ -58,12 +73,16 @@
               </div>
             </nav>
             <!-- Navbar -->
-      </header>
-       <!-- formulario de contacto en html y css -->  
-</body>
-  <!-- Integracion con Jquery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- Integracion con boostrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</header>
 
+
+   
+
+ 
+    </section>
+
+    <footer>
+        <p>&copy; QuesosDUOC</p>
+    </footer>
+</body>
 </html>
