@@ -22,3 +22,7 @@ def shop(request):
 def carrito(request):
     return render(request, 'fromagerie/carrito.html')
 
+def intranet(request):
+    return render(request, 'fromagerie/intranet.html')
+
+

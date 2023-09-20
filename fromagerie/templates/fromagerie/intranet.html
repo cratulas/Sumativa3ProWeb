@@ -49,8 +49,8 @@
                       <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'intranet' %}">intranet</a>
-                    </li>
+                        <a class="nav-link" href="{% url 'intranet' %}">intranet</a>
+                      </li>
                   </ul>
                   <ul class="navbar-nav d-flex flex-row">
                     <li class="nav-item me-3 me-lg-0">
@@ -78,51 +78,62 @@
 
 
 
-    <section class="productos">
-        <article class="producto">
-            <img src="https://santaisabel.vtexassets.com/arquivos/ids/203821-1000-1000?width=1000&height=1000&aspect=true" alt="Producto 1">
-            <h2>Producto 1</h2>
-            <p>Descripción del Producto 1.</p>
-            <p>Precio: $10.00</p>
-            <button>Añadir al Carrito</button>
-        </article>
 
-        <article class="producto">
-            <img src="https://santaisabel.vtexassets.com/arquivos/ids/197044-1000-1000?width=1000&height=1000&aspect=true" alt="Producto 2">
-            <h2>Producto 2</h2>
-            <p>Descripción del Producto 2.</p>
-            <p>Precio: $15.00</p>
-            <button>Añadir al Carrito</button>
-        </article>
-        <article class="producto">
-            <img src="https://santaisabel.vtexassets.com/arquivos/ids/206219-1000-1000?width=1000&height=1000&aspect=true" alt="Producto 2">
-            <h2>Producto 3</h2>
-            <p>Descripción del Producto 3.</p>
-            <p>Precio: $15.00</p>
-            <button>Añadir al Carrito</button>
-        </article>
-        <article class="producto">
-            <img src="https://images.lider.cl/wmtcl?source=url[file:/productos/286975a.jpg]&scale=size[2000x2000]&sink" alt="Producto 2">
-            <h2>Producto 3</h2>
-            <p>Descripción del Producto 3.</p>
-            <p>Precio: $15.00</p>
-            <button>Añadir al Carrito</button>
-        </article>
-        <article class="producto">
-            <img src="https://unimarc.vtexassets.com/arquivos/ids/233936/000000000000052142-KG-01.jpg?v=638218476533970000" alt="Producto 2">
-            <h2>Producto 3</h2>
-            <p>Descripción del Producto 3.</p>
-            <p>Precio: $15.00</p>
-            <button>Añadir al Carrito</button>
-        </article>
-        <article class="producto">
-            <img src="https://images.lider.cl/wmtcl?source=url[file:/productos/543106a.jpg]&scale=size[2000x2000]&sink" alt="Producto 2">
-            <h2>Producto 3</h2>
-            <p>Descripción del Producto 3.</p>
-            <p>Precio: $15.00</p>
-            <button>Añadir al Carrito</button>
-        </article>
-   
+<!-- dentro de intranet falta hacer un login de administrador  -->
+
+<h1>Gestión de Productos</h1>
+    
+<!-- Sección para seleccionar un producto -->
+<h2>Seleccionar un Producto</h2>
+<select id="productoSeleccionado">
+    <option value="producto1">Producto 1</option>
+    <option value="producto2">Producto 2</option>
+    <option value="producto3">Producto 3</option>
+</select>
+
+<!-- Sección para agregar un nuevo producto -->
+<h2>Agregar un Nuevo Producto</h2>
+<form id="formularioAgregar" action="agregar_producto.php" method="post">
+    <label for="nombreProducto">Nombre del Producto:</label>
+    <input type="text" id="nombreProducto" name="nombreProducto">
+    <label for="precioProducto">Precio del Producto:</label>
+    <input type="number" id="precioProducto" name="precioProducto">
+    <button type="submit">Agregar Producto</button>
+</form>
+
+<!-- Sección para modificar un producto existente -->
+<h2>Modificar un Producto</h2>
+<form id="formularioModificar" action="modificar_producto.php" method="post">
+    <select id="productoModificar" name="productoModificar">
+        <option value="producto1">Producto 1</option>
+        <option value="producto2">Producto 2</option>
+        <option value="producto3">Producto 3</option>
+    </select>
+    <label for="nuevoNombreProducto">Nuevo Nombre:</label>
+    <input type="text" id="nuevoNombreProducto" name="nuevoNombreProducto">
+    <label for="nuevoPrecioProducto">Nuevo Precio:</label>
+    <input type="number" id="nuevoPrecioProducto" name="nuevoPrecioProducto">
+    <button type="submit">Modificar Producto</button>
+</form>
+
+<!-- Sección para eliminar un producto -->
+<h2>Eliminar un Producto</h2>
+<form id="formularioEliminar" action="eliminar_producto.php" method="post">
+    <select id="productoEliminar" name="productoEliminar">
+        <option value="producto1">Producto 1</option>
+        <option value="producto2">Producto 2</option>
+        <option value="producto3">Producto 3</option>
+    </select>
+    <button type="submit">Eliminar Producto</button>
+</form>
+
+<!-- Sección para modificar texto -->
+<h2>Modificar Texto</h2>
+<form id="formularioModificarTexto" action="modificar_texto.php" method="post">
+    <label for="nuevoTexto">Nuevo Texto:</label>
+    <textarea id="nuevoTexto" name="nuevoTexto"></textarea>
+    <button type="submit">Modificar Texto</button>
+</form>
 
  
     </section>
