@@ -20,10 +20,7 @@
 
  
  <div class="container my-5">
-  <h2 class="my-4 text-center">Pyme Queseria Duoc uc </h2>
-  <p>Somos una pequeña y apasionada empresa de quesos ubicada en Chile, formada por un grupo de alumnos de la Universidad Duoc UC. Nuestra pasión por la producción de quesos de alta calidad nos ha llevado a embarcarnos en esta emocionante aventura empresarial.</p>
-            <p>Nuestro compromiso con la excelencia y la tradición quesera nos impulsa a crear productos únicos y deliciosos que reflejan nuestra dedicación y conocimiento. Trabajamos con las mejores materias primas y técnicas artesanales para producir una variedad de quesos que deleitarán tu paladar.</p>
-            <p>En Quesos Duoc UC, creemos en el sabor auténtico y en compartir la pasión por el queso con nuestros clientes. Esperamos que disfrutes de nuestros productos tanto como nosotros disfrutamos haciendo que cada bocado sea especial.</p>
+  <h2 class="my-4 text-center">CATEGORIAS</h2>
  </div >
 
 
@@ -52,8 +49,8 @@
                       <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'intranet' %}">intranet</a>
-                    </li>
+                        <a class="nav-link" href="{% url 'intranet' %}">intranet</a>
+                      </li>
                   </ul>
                   <ul class="navbar-nav d-flex flex-row">
                     <li class="nav-item me-3 me-lg-0">
@@ -79,7 +76,64 @@
 </header>
 
 
-   
+
+
+
+<!-- dentro de intranet falta hacer un login de administrador  -->
+
+<h1>Gestión de Productos</h1>
+    
+<!-- Sección para seleccionar un producto -->
+<h2>Seleccionar un Producto</h2>
+<select id="productoSeleccionado">
+    <option value="producto1">Producto 1</option>
+    <option value="producto2">Producto 2</option>
+    <option value="producto3">Producto 3</option>
+</select>
+
+<!-- Sección para agregar un nuevo producto -->
+<h2>Agregar un Nuevo Producto</h2>
+<form id="formularioAgregar" action="agregar_producto.php" method="post">
+    <label for="nombreProducto">Nombre del Producto:</label>
+    <input type="text" id="nombreProducto" name="nombreProducto">
+    <label for="precioProducto">Precio del Producto:</label>
+    <input type="number" id="precioProducto" name="precioProducto">
+    <button type="submit">Agregar Producto</button>
+</form>
+
+<!-- Sección para modificar un producto existente -->
+<h2>Modificar un Producto</h2>
+<form id="formularioModificar" action="modificar_producto.php" method="post">
+    <select id="productoModificar" name="productoModificar">
+        <option value="producto1">Producto 1</option>
+        <option value="producto2">Producto 2</option>
+        <option value="producto3">Producto 3</option>
+    </select>
+    <label for="nuevoNombreProducto">Nuevo Nombre:</label>
+    <input type="text" id="nuevoNombreProducto" name="nuevoNombreProducto">
+    <label for="nuevoPrecioProducto">Nuevo Precio:</label>
+    <input type="number" id="nuevoPrecioProducto" name="nuevoPrecioProducto">
+    <button type="submit">Modificar Producto</button>
+</form>
+
+<!-- Sección para eliminar un producto -->
+<h2>Eliminar un Producto</h2>
+<form id="formularioEliminar" action="eliminar_producto.php" method="post">
+    <select id="productoEliminar" name="productoEliminar">
+        <option value="producto1">Producto 1</option>
+        <option value="producto2">Producto 2</option>
+        <option value="producto3">Producto 3</option>
+    </select>
+    <button type="submit">Eliminar Producto</button>
+</form>
+
+<!-- Sección para modificar texto -->
+<h2>Modificar Texto</h2>
+<form id="formularioModificarTexto" action="modificar_texto.php" method="post">
+    <label for="nuevoTexto">Nuevo Texto:</label>
+    <textarea id="nuevoTexto" name="nuevoTexto"></textarea>
+    <button type="submit">Modificar Texto</button>
+</form>
 
  
     </section>

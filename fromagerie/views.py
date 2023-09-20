@@ -16,3 +16,13 @@ def recoverpassword(request):
     return render(request, 'fromagerie/recoverpassword.html')
 def about(request):
     return render(request, 'fromagerie/about.html')
+def shop(request):
+    return render(request, 'fromagerie/shop.html')
+
+def carrito(request):
+    return render(request, 'fromagerie/carrito.html')
+
+def intranet(request):
+    return render(request, 'fromagerie/intranet.html')
+
+
