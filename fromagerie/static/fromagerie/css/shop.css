@@ -2,7 +2,7 @@
 
 
 
-
+/*asdsadasd*/
 
 
 
@@ -42,6 +42,7 @@ body {
 .producto img {
     max-width: 100%;
     height: auto;
+    width: 50%;  
 }
 
 .producto h2 {
@@ -84,3 +85,5 @@ footer {
 h2.producto-disponibilidad {
     text-align: center;
 }
+
+ 

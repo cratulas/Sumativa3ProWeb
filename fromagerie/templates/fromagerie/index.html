@@ -27,7 +27,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link" href="shop.html">Online Shop</a>
+                <a class="nav-link" href="{% url 'shop' %}">Tienda</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -59,47 +59,21 @@
       <!-- Navbar -->
       </header>
 
-      <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="card-body">
-              <img src="{% static 'fromagerie/img/fromager3.jpg'%}" class="d-block w-100" alt="fromager1">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card-body">
-              <img src="{% static 'fromagerie/img/fromager1.jpg'%}" class="d-block w-100" alt="fromager1">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card-body">
-              <img src="{% static 'fromagerie/img/fromager2.jpg'%}" class="d-block w-100" alt="fromager1">
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+ 
       
 
       <div class="container my-5">
-        <h2 class="my-4 text-center">Categories</h2>
+        <h2 class="my-4 text-center">CATEGORIAS</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col">
             <div class="card h-100">
               <img src="{% static 'fromagerie/img/bleu-dauvergne.webp'%}" class="card-img-top img-fluid" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Blue Cheese</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">Queso azul</h5>
+                <p class="card-text">El queso azul es un queso de pasta cremosa y con vetas azules que le confieren un sabor fuerte y distintivo.</p>
               </div>
               <div class="card-footer">
-                <small class="text-body-secondary">Last updated 3 mins ago</small>
+                <small class="text-body-secondary">Producto nacional</small>
               </div>
             </div>
           </div>
@@ -108,11 +82,11 @@
 
               <img src="{% static 'fromagerie/img/goatCHeese.jpg'%}" class="card-img-top img-fluid" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Goat Cheese</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title">Queso de cabra</h5>
+                <p class="card-text">El queso de cabra es un lácteo elaborado con leche de cabra, conocido por su sabor suave y textura cremosa, perfecto para ensaladas y aperitivos.</p>
               </div>
               <div class="card-footer">
-                <small class="text-body-secondary">Last updated 3 mins ago</small>
+                <small class="text-body-secondary">internacional</small>
               </div>
             </div>
           </div>
@@ -120,16 +94,19 @@
             <div class="card h-100">
               <img src="{% static 'fromagerie/img/hardCheese.jpeg'%}" class="card-img-top img-fluid" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Hard Cheese</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <h5 class="card-title">Queso maduro</h5>
+                <p class="card-text">El queso maduro es un queso envejecido con un sabor intenso y aromático, con notas terrosas y saladas, ideal para degustar con vinos o en platos gourmet.</p>
               </div>
               <div class="card-footer">
-                <small class="text-body-secondary">Last updated 3 mins ago</small>
+                <small class="text-body-secondary">Nacional</small>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+
 
       <div class="container-large mt-5">
         <!-- Footer -->
