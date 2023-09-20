@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+
+
+
+    <h2>Carrito</h2>
+    <div id="carrito">
+        <!-- Aquí se mostrarán los productos agregados al carrito -->
+    </div>
+
+    <h3>Total: <span id="total">0.00</span></h3>
+
+    <script>
+        const carrito = [];
+        const totalElement = document.getElementById('total');
+
+        function agregarAlCarrito(nombre, precio) {
+            carrito.push({ nombre, precio });
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const carritoElement = document.getElementById('carrito');
+            let total = 0;
+
+            carritoElement.innerHTML = '';
+
+            carrito.forEach((producto) => {
+                const productoElement = document.createElement('div');
+                productoElement.innerHTML = `${producto.nombre} - $${producto.precio}`;
+                carritoElement.appendChild(productoElement);
+                total += producto.precio;
+            });
+
+            totalElement.textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
