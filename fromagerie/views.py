@@ -8,8 +8,6 @@ from .permissions import es_admin
 from django.contrib import messages
 from rest_framework import viewsets
 from .serializers import ProductoSerializer
-# Create your views here.
-# fromagerie/views.py
 import requests
 from django.http import JsonResponse
 
