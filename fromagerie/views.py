@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import ContactFormModel
 from .models import Producto
 from .forms import ProductoForm
+from django.contrib.auth.decorators import user_passes_test
+from .permissions import es_admin
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -20,10 +23,16 @@ def contact(request):
     return render(request, 'fromagerie/contact.html', {'form': form})
 
 # CRUD PRODUCTOS
-@login_required
+@user_passes_test(es_admin, login_url='/admin/')
 def lista_productos(request):
+    # Comprueba si el usuario tiene permisos y, si no, agrega un mensaje de error.
+    if not es_admin(request.user):
+        messages.error(request, 'Debes estar logeado como administrador para acceder a esta página.')
+        return redirect('admin')
     productos = Producto.objects.all()
     return render(request, 'fromagerie/lista_productos.html', {'productos': productos})
+
+
 @login_required
 def crear_producto(request):
     if request.method == 'POST':
