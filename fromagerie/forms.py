@@ -1,5 +1,6 @@
 from django import forms
 from .models import ContactForm
+from .models import Producto
 
 class ContactFormModel(forms.ModelForm):
     class Meta:
@@ -27,3 +28,7 @@ class ContactFormModel(forms.ModelForm):
                 'required': 'Este campo es obligatorio.',
             },
         }
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = '__all__'
