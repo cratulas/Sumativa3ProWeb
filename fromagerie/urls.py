@@ -24,6 +24,8 @@ urlpatterns = [
     path('productos/editar/<int:pk>/', views.actualizar_producto, name='editar_producto'),
     path('productos/eliminar/<int:pk>/', views.eliminar_producto, name='eliminar_producto'),
     path('api/', include(router.urls)),
+    path("cheeses/", views.cheese_list, name="cheese_list"),
+    path('api/v1/cheeses/', views.obtener_cheeses, name='obtener_cheeses'),
     ]
 
 

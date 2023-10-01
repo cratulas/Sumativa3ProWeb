@@ -9,6 +9,25 @@ from django.contrib import messages
 from rest_framework import viewsets
 from .serializers import ProductoSerializer
 # Create your views here.
+# fromagerie/views.py
+import requests
+from django.http import JsonResponse
+
+def cheese_list(request):
+    response = requests.get("https://cheese-api.onrender.com/cheeses")
+    cheeses = response.json() if response.status_code == 200 else []
+    
+    return render(request, "fromagerie/cheese_list.html", {"cheeses": cheeses})
+
+def obtener_cheeses(request):
+    url = "https://cheese-api.onrender.com/cheeses"
+    
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        return JsonResponse(response.json(), safe=False)
+    else:
+        return JsonResponse({"error": "No se pudo obtener la información de la API"}, status=500)
 
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()

@@ -1,0 +1,11 @@
+<h1>Listado de Quesos</h1>
+
+{% for cheese in cheeses %}
+    <div style="border: 1px solid #ccc; margin-bottom: 20px; padding: 15px;">
+        <img src="{{ cheese.image }}" alt="{{ cheese.name }}" style="width: 200px; height: auto;">
+        <h2>{{ cheese.name }}</h2>
+        <p>{{ cheese.description|safe }}</p>
+        <p><strong>Descripcion:</strong> {{ cheese.raw_description }}</p>
+        <p><strong>Tipo de leche:</strong> {{ cheese.milk }}</p>
+    </div>
+{% endfor %}
