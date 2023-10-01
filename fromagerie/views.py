@@ -6,7 +6,22 @@ from .forms import ProductoForm
 from django.contrib.auth.decorators import user_passes_test
 from .permissions import es_admin
 from django.contrib import messages
+from rest_framework import viewsets
+from .serializers import ProductoSerializer
 # Create your views here.
+
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
+    def get_queryset(self):
+        productos = Producto.objects.all()
+
+        nombre = self.request.GET.get('nombre')
+
+        if nombre:
+            productos = productos.filter(nombre__contains=nombre)
+        return productos
 
 def index(request):
     return render(request, 'fromagerie/index.html')
