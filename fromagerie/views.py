@@ -10,12 +10,32 @@ from rest_framework import viewsets
 from .serializers import ProductoSerializer
 import requests
 from django.http import JsonResponse
+from .forms import SignUpForm
+from django.contrib import messages
+
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+            return redirect('login')
+    else:
+        form = SignUpForm()
+    return render(request, 'fromagerie/signup.html', {'form': form})
+
+
 
 def cheese_list(request):
     response = requests.get("https://cheese-api.onrender.com/cheeses")
     cheeses = response.json() if response.status_code == 200 else []
     
     return render(request, "fromagerie/cheese_list.html", {"cheeses": cheeses})
+
+
 
 def obtener_cheeses(request):
     url = "https://cheese-api.onrender.com/cheeses"
@@ -26,6 +46,8 @@ def obtener_cheeses(request):
         return JsonResponse(response.json(), safe=False)
     else:
         return JsonResponse({"error": "No se pudo obtener la información de la API"}, status=500)
+
+
 
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
@@ -40,8 +62,12 @@ class ProductoViewSet(viewsets.ModelViewSet):
             productos = productos.filter(nombre__contains=nombre)
         return productos
 
+
+
 def index(request):
     return render(request, 'fromagerie/index.html')
+
+
 
 def contact(request):
     if request.method == 'POST':
@@ -53,6 +79,8 @@ def contact(request):
         form = ContactFormModel()
 
     return render(request, 'fromagerie/contact.html', {'form': form})
+
+
 
 # CRUD PRODUCTOS
 @user_passes_test(es_admin, login_url='/admin/')
@@ -99,10 +127,10 @@ def eliminar_producto(request, pk):
     return render(request, 'fromagerie/eliminar_producto.html', {'producto': producto})
 # FIN CRUD PRODUCTOS
 
+
+
 def login(request):
     return render(request, 'fromagerie/login.html')
-def signup(request):
-    return render(request, 'fromagerie/signup.html')
 def recoverpassword(request):
     return render(request, 'fromagerie/recoverpassword.html')
 def about(request):

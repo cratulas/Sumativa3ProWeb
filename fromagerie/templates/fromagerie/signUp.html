@@ -76,40 +76,46 @@
                             style="width: 185px;" alt="logo">
                           <h4 class="mt-1 mb-5 pb-1">Fromagerie</h4>
                         </div>
-        
-                        <form action="!#" method="post">
-                          <p>Please fill in this form to create an account!</p>
-        
-                          <div class="form-outline mb-4">
-                            <input type="text" class="form-control" name="username" placeholder="Username" required="required">
-                          </div>
-                          
-                          <div class="form-outline mb-4">
-                            <input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
-                          </div>
-
-                          <div class="form-outline mb-4">
-                            <input class="form-control" type="password" name="password" placeholder="Password" required="required">
-                          </div>
-
-                          <div class="form-outline mb-4">
-                            <input class="form-control" type="password" name="confirm_password" placeholder="Confirm Password" required="required">
-                          </div>
-
-                          <div class="form-group">
-                            <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-                          </div>
-
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-lg mt-3 text-white" style="background-color: #ab4493">Sign Up</button>
-                          </div>
-        
-                          <div class="d-flex align-items-center justify-content-center pb-4 mt-2">
-                            <p class="mb-0 me-2">Already have an account? </p>
-                            <a href="{% url 'login' %}" class="btn btn-outline-danger">Login here</a>
-                          </div>
-        
+                        <form action="{% url 'signup' %}" method="post">
+                            {% csrf_token %}
+                        
+                            <p>
+                                <label for="{{ form.username.id_for_label }}" class="colocar_username">
+                                    {{ form.username.label }}
+                                </label>
+                                {{ form.username }}
+                            </p>
+                        
+                            <!-- Campo email -->
+                            <p>
+                                <label for="{{ form.email.id_for_label }}" class="colocar_email">
+                                    {{ form.email.label }}
+                                </label>
+                                <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" placeholder="Escribe tu Email">
+                            </p>
+                        
+                            <!-- Campo password1 -->
+                            <p>
+                                <label for="{{ form.password1.id_for_label }}" class="colocar_password1">
+                                    {{ form.password1.label }}
+                                </label>
+                                <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" placeholder="Escribe tu contraseña">
+                            </p>
+                        
+                            <!-- Campo password2 -->
+                            <p>
+                                <label for="{{ form.password2.id_for_label }}" class="colocar_password2">
+                                    {{ form.password2.label }}
+                                </label>
+                                <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" placeholder="Confirma tu contraseña">
+                            </p>
+                        
+                            <button type="submit" name="enviar_formulario" class="my-2" id="enviar"><p>Registrar</p></button>
+                            <button type="reset" class="btn btn-secondary my-2" id="limpiarFormulario">Limpiar</button>
                         </form>
+                        
+                        
+                        
         
                       </div>
                     </div>
