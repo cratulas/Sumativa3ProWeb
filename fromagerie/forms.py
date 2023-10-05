@@ -5,6 +5,11 @@ from .models import Producto
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Escribe tu nombre de usuario'}))
+    password = forms.PasswordInput(attrs={'placeholder': 'Escribe tu contraseña'})
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')

@@ -13,6 +13,47 @@ from django.http import JsonResponse
 from .forms import SignUpForm
 from django.contrib import messages
 
+from django.contrib.auth import authenticate, login as auth_login
+from .forms import LoginForm
+
+
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')  # Redirecciona al inicio o donde prefieras después de cerrar sesión
+
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            auth_login(request, user)
+            messages.success(request, 'login_successful')
+            return redirect('index')
+        else:
+            messages.error(request, 'Username o contraseña incorrectos.')
+    else:
+        form = LoginForm()
+
+    return render(request, 'fromagerie/login.html', {'form': form})
+
+
+from django.contrib import messages
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            auth_login(request, user)
+            messages.success(request, '¡Bienvenido a la fromagerie!')
+            return redirect('index')
+        else:
+            messages.error(request, 'Username o contraseña incorrectos.')
+    else:
+        form = LoginForm()
+    return render(request, 'path_to_your_login_template.html', {'form': form})
 
 
 def signup(request):
@@ -128,9 +169,6 @@ def eliminar_producto(request, pk):
 # FIN CRUD PRODUCTOS
 
 
-
-def login(request):
-    return render(request, 'fromagerie/login.html')
 def recoverpassword(request):
     return render(request, 'fromagerie/recoverpassword.html')
 def about(request):
