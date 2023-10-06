@@ -9,7 +9,7 @@
     <!-- Integracion con boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <!-- Integracion CSS -->
-    <link rel="stylesheet" href="{% static 'fromagerie/css/styleRecoverPassword.css'%}">
+    <link rel="stylesheet" href="{% static 'fromagerie/css/StyleUpdate_profile.css'%}">
     <!-- Integracion con fontawesome -->
     <script src="https://kit.fontawesome.com/ab6bee0ad1.js" crossorigin="anonymous"></script>
   </head>
@@ -26,6 +26,9 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lista_productos' %}">AdminProductos</a>
+                </li>
                  <li class="nav-item">
                      <a class="nav-link" href="{% url 'shop' %}">Tienda</a>
                  </li>
@@ -35,13 +38,10 @@
                  <li class="nav-item">
                      <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
                  </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="{% url 'intranet' %}">intranet</a>
-                 </li>
              </ul>
              <ul class="navbar-nav d-flex flex-row">
                  <li class="nav-item me-3 me-lg-0">
-                     <a class="nav-link" href="shoppingCart.html">
+                     <a class="nav-link" href="{% url 'carrito' %}">
                          <i class="fas fa-shopping-cart"></i>
                      </a>
                  </li>
@@ -51,6 +51,11 @@
                          <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
                      </a>
                  </li>
+                 <li class="nav-item me-3 me-lg-0">
+                  <a class="nav-link" href="{% url 'update_profile' %}">
+                      <i class="fas fa-sync"></i> MiPerfil
+                  </a>
+                </li>
                  {% else %}
                  <li class="nav-item me-3 me-lg-0">
                      <a class="nav-link" href="{% url 'login' %}">
@@ -85,21 +90,39 @@
                             style="width: 185px;" alt="logo">
                           <h4 class="mt-1 mb-5 pb-1">Fromagerie</h4>
                         </div>
-        
-                        <form>
-                          <p>Forgot your password?</p>
-        
-                          <div class="form-outline mb-4">
-                            <input type="email" id="form2Example11" class="form-control"
-                              placeholder="Username or email" />
 
+                        <h3 class="mb-5">Actualiza tus datos</h3>
+                        <form action="{% url 'update_profile' %}" method="post">
+                          {% csrf_token %}
+                          
+                          {% for field in user_form %}
+                          <div class="form-group">
+                              {{ field.label_tag }} {{ field }}
+                              {% if field.errors %}
+                                  <div class="text-danger">
+                                      {{ field.errors.0 }}
+                                  </div>
+                              {% endif %}
                           </div>
-  
+                      {% endfor %}
+                      
+                      <!-- Formulario de cambio de contraseña -->
+                      {% for field in password_form %}
+                          <div class="form-group">
+                              {{ field.label_tag }} {{ field }}
+                              {% if field.errors %}
+                                  <div class="text-danger">
+                                      {{ field.errors.0 }}
+                                  </div>
+                              {% endif %}
+                          </div>
+                      {% endfor %}
+                          
                           <div class="text-center pt-1 mb-5 pb-1">
-                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-login" type="button">Recover Password</button>
+                              <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-login" type="submit">Update Profile</button>
                           </div>
-      
-                        </form>
+                      </form>
+                      
         
                       </div>
                     </div>
@@ -141,8 +164,6 @@
 
   <!-- Integracion con Jquery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- Integracion js personal -->
-  <script src="{% static 'fromagerie/js/recoverPassword.js'%}"></script>
   <!-- Integracion con boostrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 

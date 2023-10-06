@@ -19,9 +19,30 @@ from .forms import LoginForm
 
 from django.contrib.auth import logout
 
+
+
+from django.contrib.auth import update_session_auth_hash
+from .forms import UpdateProfileForm, ChangePasswordForm
+
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        user_form = UpdateProfileForm(request.POST, instance=request.user)
+        password_form = ChangePasswordForm(request.user, request.POST)
+        if user_form.is_valid() and password_form.is_valid():
+            user_form.save()
+            password_form.save()
+            update_session_auth_hash(request, password_form.user)
+            return redirect('index')
+    else:
+        user_form = UpdateProfileForm(instance=request.user)
+        password_form = ChangePasswordForm(request.user)
+    
+    return render(request, 'fromagerie/update_profile.html', {'user_form': user_form, 'password_form': password_form})
+
 def logout_view(request):
     logout(request)
-    return redirect('index')  # Redirecciona al inicio o donde prefieras después de cerrar sesión
+    return redirect('index') 
 
 def login(request):
     if request.method == 'POST':
@@ -169,8 +190,6 @@ def eliminar_producto(request, pk):
 # FIN CRUD PRODUCTOS
 
 
-def recoverpassword(request):
-    return render(request, 'fromagerie/recoverpassword.html')
 def about(request):
     return render(request, 'fromagerie/about.html')
 

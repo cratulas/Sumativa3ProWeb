@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 {% load static%}
-{% if messages %}
-  {% for message in messages %}
-      <div id="message" data-value="{{ message }}"></div>
-  {% endfor %}
-{% endif %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +27,9 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lista_productos' %}">AdminProductos</a>
+                </li>
                  <li class="nav-item">
                      <a class="nav-link" href="{% url 'shop' %}">Tienda</a>
                  </li>
@@ -40,13 +39,10 @@
                  <li class="nav-item">
                      <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
                  </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="{% url 'intranet' %}">intranet</a>
-                 </li>
              </ul>
              <ul class="navbar-nav d-flex flex-row">
                  <li class="nav-item me-3 me-lg-0">
-                     <a class="nav-link" href="shoppingCart.html">
+                     <a class="nav-link" href="{% url 'carrito' %}">
                          <i class="fas fa-shopping-cart"></i>
                      </a>
                  </li>
@@ -56,6 +52,11 @@
                          <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
                      </a>
                  </li>
+                 <li class="nav-item me-3 me-lg-0">
+                  <a class="nav-link" href="{% url 'update_profile' %}">
+                      <i class="fas fa-sync"></i> MiPerfil
+                  </a>
+                </li>
                  {% else %}
                  <li class="nav-item me-3 me-lg-0">
                      <a class="nav-link" href="{% url 'login' %}">
@@ -147,9 +148,6 @@
         </div>
       </div>
 
-
-
-
       <div class="container-large mt-5">
         <!-- Footer -->
         <footer class="text-center text-white">
@@ -158,7 +156,7 @@
               class="text-center p-3"
               style="background-color: #ab4493;"
               >
-            © 2020 Copyright:
+            © 2023 Copyright:
             <a class="text-white" href="#"
               >Fromagerie</a
               >

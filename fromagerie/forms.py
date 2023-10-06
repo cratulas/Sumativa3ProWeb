@@ -7,6 +7,16 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
+from django.contrib.auth.forms import PasswordChangeForm
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username']
+
+class ChangePasswordForm(PasswordChangeForm):
+    pass    
+
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Escribe tu nombre de usuario'}))
     password = forms.PasswordInput(attrs={'placeholder': 'Escribe tu contraseña'})

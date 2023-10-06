@@ -27,62 +27,66 @@
 <body>
 
 
-  <header>
-    <!-- Navbar -->
-   <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
-     <div class="container">
-         <a class="navbar-brand" href="{% url 'index' %}"><span style="color: #5e9693;">Quesería Duoc UC</span></a>
-         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                 aria-label="Toggle navigation">
-             <i class="fas fa-bars"></i>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-             <ul class="navbar-nav me-auto">
-                 <li class="nav-item">
-                     <a class="nav-link" href="{% url 'shop' %}">Tienda</a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="{% url 'about' %}">Nosotros</a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="{% url 'intranet' %}">intranet</a>
-                 </li>
-             </ul>
-             <ul class="navbar-nav d-flex flex-row">
-                 <li class="nav-item me-3 me-lg-0">
-                     <a class="nav-link" href="shoppingCart.html">
-                         <i class="fas fa-shopping-cart"></i>
-                     </a>
-                 </li>
-                 {% if user.is_authenticated %}
-                 <li class="nav-item me-3 me-lg-0">
-                     <a class="nav-link" href="{% url 'logout' %}">
-                         <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                     </a>
-                 </li>
-                 {% else %}
-                 <li class="nav-item me-3 me-lg-0">
-                     <a class="nav-link" href="{% url 'login' %}">
-                         <i class="fa fa-user"></i>
-                     </a>
-                 </li>
-                 {% endif %}
-                 <li class="nav-item me-3 me-lg-0">
-                     <a class="nav-link" href="https://www.instagram.com">
-                         <i class="fab fa-instagram"></i>
-                     </a>
-                 </li>
-             </ul>
+    <header>
+        <!-- Navbar -->
+       <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
+         <div class="container">
+             <a class="navbar-brand" href="{% url 'index' %}"><span style="color: #5e9693;">Quesería Duoc UC</span></a>
+             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                     aria-label="Toggle navigation">
+                 <i class="fas fa-bars"></i>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                 <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'lista_productos' %}">AdminProductos</a>
+                    </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'shop' %}">Tienda</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'about' %}">Nosotros</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
+                     </li>
+                 </ul>
+                 <ul class="navbar-nav d-flex flex-row">
+                     <li class="nav-item me-3 me-lg-0">
+                         <a class="nav-link" href="{% url 'carrito' %}">
+                             <i class="fas fa-shopping-cart"></i>
+                         </a>
+                     </li>
+                     {% if user.is_authenticated %}
+                     <li class="nav-item me-3 me-lg-0">
+                         <a class="nav-link" href="{% url 'logout' %}">
+                             <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                         </a>
+                     </li>
+                     <li class="nav-item me-3 me-lg-0">
+                      <a class="nav-link" href="{% url 'update_profile' %}">
+                          <i class="fas fa-sync"></i> MiPerfil
+                      </a>
+                    </li>
+                     {% else %}
+                     <li class="nav-item me-3 me-lg-0">
+                         <a class="nav-link" href="{% url 'login' %}">
+                             <i class="fa fa-user"></i>
+                         </a>
+                     </li>
+                     {% endif %}
+                     <li class="nav-item me-3 me-lg-0">
+                         <a class="nav-link" href="https://www.instagram.com">
+                             <i class="fab fa-instagram"></i>
+                         </a>
+                     </li>
+                 </ul>
+             </div>
          </div>
-     </div>
-   </nav>
-   <!-- Navbar -->
-   </header>
-
+       </nav>
+       <!-- Navbar -->
+       </header>
 
 
 
