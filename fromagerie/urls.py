@@ -1,12 +1,13 @@
 from django.urls import path, include
 from . import views
 from rest_framework import routers
+from rest_framework.authtoken.views import obtain_auth_token
 # from .views import index,contact
 # path('',index,name='index'),
 # path('contact/',contact,name='contact'),
 
 router = routers.DefaultRouter()
-router.register('producto', views.ProductoViewSet)
+router.register(r'producto', views.ProductoViewSet)
 #localhost:8000/api/producto
 
 urlpatterns = [
@@ -16,17 +17,17 @@ urlpatterns = [
     path('signup/', views.signup,name='signup'),
     path('logout/', views.logout_view, name='logout'),
     path('update_profile/', views.update_profile, name='update_profile'),
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     path('about/', views.about,name='about'),
     path('shop/', views.shop, name='shop'),
     path('carrito/', views.carrito, name='carrito'),
-    path('intranet/', views.intranet, name='intranet'),#####
     path('productos/', views.lista_productos, name='lista_productos'),
     path('productos/nuevo/', views.crear_producto, name='crear_producto'),
     path('productos/editar/<int:pk>/', views.actualizar_producto, name='editar_producto'),
     path('productos/eliminar/<int:pk>/', views.eliminar_producto, name='eliminar_producto'),
-    path('api/', include(router.urls)),
-    path("cheeses/", views.cheese_list, name="cheese_list"),
-    path('api/v1/cheeses/', views.obtener_cheeses, name='obtener_cheeses'),
+    path('api/v1/', include(router.urls)),
+    path("cheeses/", views.cheese_list, name="cheese_list"), #html
+    path('cheeses/json', views.obtener_cheeses, name='obtener_cheeses'), #jsON
     ]
 
 

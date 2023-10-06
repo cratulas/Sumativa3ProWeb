@@ -12,18 +12,14 @@ import requests
 from django.http import JsonResponse
 from .forms import SignUpForm
 from django.contrib import messages
-
 from django.contrib.auth import authenticate, login as auth_login
 from .forms import LoginForm
-
-
 from django.contrib.auth import logout
-
-
-
 from django.contrib.auth import update_session_auth_hash
 from .forms import UpdateProfileForm, ChangePasswordForm
 
+
+# Perfiles de usuario
 @login_required
 def update_profile(request):
     if request.method == 'POST':
@@ -59,24 +55,6 @@ def login(request):
 
     return render(request, 'fromagerie/login.html', {'form': form})
 
-
-from django.contrib import messages
-
-def login_view(request):
-    if request.method == 'POST':
-        form = LoginForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            auth_login(request, user)
-            messages.success(request, '¡Bienvenido a la fromagerie!')
-            return redirect('index')
-        else:
-            messages.error(request, 'Username o contraseña incorrectos.')
-    else:
-        form = LoginForm()
-    return render(request, 'path_to_your_login_template.html', {'form': form})
-
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -89,16 +67,17 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'fromagerie/signup.html', {'form': form})
 
+# FIN PERFILES DE USUARIO
 
 
+# CONSUMO DE API Y RESPUESTA COMO html
 def cheese_list(request):
     response = requests.get("https://cheese-api.onrender.com/cheeses")
     cheeses = response.json() if response.status_code == 200 else []
     
     return render(request, "fromagerie/cheese_list.html", {"cheeses": cheeses})
 
-
-
+# CONSUMO DE API Y RESPUESTA COMO json
 def obtener_cheeses(request):
     url = "https://cheese-api.onrender.com/cheeses"
     
@@ -110,12 +89,12 @@ def obtener_cheeses(request):
         return JsonResponse({"error": "No se pudo obtener la información de la API"}, status=500)
 
 
-
+# API PROPIA
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
 
-    def get_queryset(self):
+    def get_queryset(self): 
         productos = Producto.objects.all()
 
         nombre = self.request.GET.get('nombre')
@@ -143,7 +122,7 @@ def contact(request):
     return render(request, 'fromagerie/contact.html', {'form': form})
 
 
-
+#####################################
 # CRUD PRODUCTOS
 @user_passes_test(es_admin, login_url='/admin/')
 def lista_productos(request):
@@ -153,9 +132,7 @@ def lista_productos(request):
         return redirect('admin')
     productos = Producto.objects.all()
     return render(request, 'fromagerie/lista_productos.html', {'productos': productos})
-
-
-@login_required
+@user_passes_test(es_admin, login_url='/admin/')
 def crear_producto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST, request.FILES)
@@ -165,7 +142,7 @@ def crear_producto(request):
     else:
         form = ProductoForm()
     return render(request, 'fromagerie/crear_producto.html', {'form': form})
-@login_required
+@user_passes_test(es_admin, login_url='/admin/')
 def actualizar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     
@@ -178,7 +155,7 @@ def actualizar_producto(request, pk):
         form = ProductoForm(instance=producto)
     
     return render(request, 'fromagerie/actualizar_producto.html', {'form': form, 'producto': producto})
-@login_required
+@user_passes_test(es_admin, login_url='/admin/')
 def eliminar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     
@@ -188,7 +165,7 @@ def eliminar_producto(request, pk):
     
     return render(request, 'fromagerie/eliminar_producto.html', {'producto': producto})
 # FIN CRUD PRODUCTOS
-
+###################################
 
 def about(request):
     return render(request, 'fromagerie/about.html')
@@ -201,8 +178,5 @@ def shop(request):
     }
     return render(request, 'fromagerie/shop.html', data)
 
-
 def carrito(request):
     return render(request, 'fromagerie/carrito.html')
-def intranet(request):
-    return render(request, 'fromagerie/intranet.html')
