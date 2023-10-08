@@ -18,6 +18,35 @@ from django.contrib.auth import logout
 from django.contrib.auth import update_session_auth_hash
 from .forms import UpdateProfileForm, ChangePasswordForm
 
+from .models import Producto, Carrito, ItemCarrito
+
+
+@login_required
+def add_to_carrito(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    carrito, created = Carrito.objects.get_or_create(user=request.user)
+    item, created = ItemCarrito.objects.get_or_create(carrito=carrito, producto=producto)
+    if not created:
+        item.cantidad += 1
+        item.save()
+    return redirect('carrito')
+
+@login_required
+def ver_carrito(request):
+    carrito = Carrito.objects.get(user=request.user)
+    items = ItemCarrito.objects.filter(carrito=carrito)
+
+    for item in items:
+        item.subtotal = item.cantidad * item.producto.precio
+
+    return render(request, 'fromagerie/carrito.html', {'items': items})
+
+
+@login_required
+def eliminar_item(request, item_id):
+    item = get_object_or_404(ItemCarrito, id=item_id, carrito__user=request.user)
+    item.delete()
+    return redirect('carrito')
 
 # Perfiles de usuario
 @login_required

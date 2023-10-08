@@ -93,7 +93,7 @@
               <h2>{{ producto.nombre }}</h2>
               <p>{{ producto.descripcion }}</p>
               <p>Precio: ${{ producto.precio }}</p>
-              <button>Añadir al Carrito</button>
+              <button><a href="{% url 'add_to_carrito' producto.id %}">Añadir al Carrito</a></button>
           </div>
       </div>
   {% endfor %}
