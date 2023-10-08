@@ -88,8 +88,7 @@
               {% if producto.imagen and producto.imagen.url %}
                   <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
               {% else %}
-                  <!-- Imagen por defecto o simplemente no mostrar nada -->
-                  <img src="{% static 'path/to/default/image.jpg' %}" alt="Imagen no disponible">
+                  <img src="{% static 'fromagerie/img/imagenDefecto.png' %}" alt="Imagen no disponible">
               {% endif %}
               <h2>{{ producto.nombre }}</h2>
               <p>{{ producto.descripcion }}</p>
